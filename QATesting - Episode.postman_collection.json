@@ -1,0 +1,675 @@
+{
+	"info": {
+		"_postman_id": "c8230c23-ec11-445e-a4de-67dc5799955c",
+		"name": "QATesting - Episode",
+		"description": "This is a Test for the Rick And Morty API.\r\n\r\nEPISODE resourse.\r\n\r\n-> GET A SINGLE CHARACTER: [Status Codes, Check Id, Time Response Check]\r\n* Check for an existing Id.\r\n* Check for a not-existing Id.\r\n* Check for a negative Id.\r\n* Check for a zero Id.\r\n* Check for an invalid Id.\r\n* Check for an empty Id.\r\n* Check for a large Id.\r\n* Check for multiple existing Id.\r\n* Check for multiple existing and not-existing Id.\r\n* Check for multiple valid and invalid Id.\r\n* Check for multiple invalid Id.\r\n* Check for filter with correct data.\r\n* Check for filter with incorrect data.\r\n* Check for filter with empty data.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Episode - Check for an existing Id",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "04b8417f-9aa8-4db6-82b2-e78c047096e1",
+						"exec": [
+							"var response = pm.response.json();\r",
+							"\r",
+							"pm.test(\"Check OK Codes\", function () {\r",
+							"    pm.expect(pm.response.code).to.be.oneOf([200, 201, 204]);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response time is less than 200ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://rickandmortyapi.com/api/episode/3",
+					"protocol": "https",
+					"host": [
+						"rickandmortyapi",
+						"com"
+					],
+					"path": [
+						"api",
+						"episode",
+						"3"
+					]
+				},
+				"description": "Check response for an existing Id.\r\nId = 3"
+			},
+			"response": []
+		},
+		{
+			"name": "Episode - Check for an not-existing Id",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "aaa55b7a-7b44-4f92-ad26-3417b694894d",
+						"exec": [
+							"var response = pm.response.json();\r",
+							"\r",
+							"pm.test(\"Check OK Codes\", function () {\r",
+							"    pm.expect(pm.response.code).to.be.oneOf([200, 201, 204]);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Location not found\", function () {\r",
+							"    pm.expect(response.error).to.eql(\"Episode not found\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response time is less than 200ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://rickandmortyapi.com/api/episode/37",
+					"protocol": "https",
+					"host": [
+						"rickandmortyapi",
+						"com"
+					],
+					"path": [
+						"api",
+						"episode",
+						"37"
+					]
+				},
+				"description": "Check response for an existing Id.\r\nId = 3"
+			},
+			"response": []
+		},
+		{
+			"name": "Episode - Check for an negative Id",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "3dce81c0-ec5e-4bac-81d9-d322bf5f258b",
+						"exec": [
+							"var response = pm.response.json();\r",
+							"\r",
+							"pm.test(\"Check OK Codes\", function () {\r",
+							"    pm.expect(pm.response.code).to.be.oneOf([200, 201, 204]);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Location not found\", function () {\r",
+							"    pm.expect(response.error).to.eql(\"Episode not found\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response time is less than 200ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://rickandmortyapi.com/api/episode/-3",
+					"protocol": "https",
+					"host": [
+						"rickandmortyapi",
+						"com"
+					],
+					"path": [
+						"api",
+						"episode",
+						"-3"
+					]
+				},
+				"description": "Check response for an existing Id.\r\nId = 3"
+			},
+			"response": []
+		},
+		{
+			"name": "Episode - Check for a zero Id",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "e6abb75c-8e17-4b8c-a93d-1583facaa62b",
+						"exec": [
+							"var response = pm.response.json();\r",
+							"\r",
+							"pm.test(\"Check OK Codes\", function () {\r",
+							"    pm.expect(pm.response.code).to.be.oneOf([200, 201, 204]);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Location not found\", function () {\r",
+							"    pm.expect(response.error).to.eql(\"Episode not found\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response time is less than 200ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://rickandmortyapi.com/api/episode/0",
+					"protocol": "https",
+					"host": [
+						"rickandmortyapi",
+						"com"
+					],
+					"path": [
+						"api",
+						"episode",
+						"0"
+					]
+				},
+				"description": "Check response for an existing Id.\r\nId = 3"
+			},
+			"response": []
+		},
+		{
+			"name": "Episode - Check for an invalid Id",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "d50a961d-8ed5-4cf3-80ae-93b91d026975",
+						"exec": [
+							"var response = pm.response.json();\r",
+							"\r",
+							"pm.test(\"Check OK Codes\", function () {\r",
+							"    pm.expect(pm.response.code).to.be.oneOf([200, 201, 204]);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Invalid Id\", function () {\r",
+							"    pm.expect(response.error).to.eql(\"Hey! you must provide an id\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response time is less than 200ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://rickandmortyapi.com/api/episode/S8+",
+					"protocol": "https",
+					"host": [
+						"rickandmortyapi",
+						"com"
+					],
+					"path": [
+						"api",
+						"episode",
+						"S8+"
+					]
+				},
+				"description": "Check response for an existing Id.\r\nId = 3"
+			},
+			"response": []
+		},
+		{
+			"name": "Episode - Check for an empty Id",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "4a77eb3e-0c04-498c-a959-960cd4da3f23",
+						"exec": [
+							"var response = pm.response.json();\r",
+							"\r",
+							"pm.test(\"Check OK Codes\", function () {\r",
+							"    pm.expect(pm.response.code).to.be.oneOf([200, 201, 204]);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response time is less than 200ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://rickandmortyapi.com/api/episode/",
+					"protocol": "https",
+					"host": [
+						"rickandmortyapi",
+						"com"
+					],
+					"path": [
+						"api",
+						"episode",
+						""
+					]
+				},
+				"description": "Check response for an existing Id.\r\nId = 3"
+			},
+			"response": []
+		},
+		{
+			"name": "Episode - Check for a large Id",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "b606f46c-90ed-4989-93dc-adbcf77a351b",
+						"exec": [
+							"var response = pm.response.json();\r",
+							"\r",
+							"pm.test(\"Check OK Codes\", function () {\r",
+							"    pm.expect(pm.response.code).to.be.oneOf([200, 201, 204]);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Check ID\", function () {\r",
+							"    pm.expect(response.id).to.eql(2);\r",
+							"})\r",
+							"\r",
+							"pm.test(\"Response time is less than 200ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://rickandmortyapi.com/api/episode/000000000000000000000000000000000000000000002",
+					"protocol": "https",
+					"host": [
+						"rickandmortyapi",
+						"com"
+					],
+					"path": [
+						"api",
+						"episode",
+						"000000000000000000000000000000000000000000002"
+					]
+				},
+				"description": "Check response for an existing Id.\r\nId = 3"
+			},
+			"response": []
+		},
+		{
+			"name": "Episode - Check for multiple existing Id",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "7c3396e3-db43-4fd6-9b09-769ab89b1745",
+						"exec": [
+							"var response = pm.response.json();\r",
+							"\r",
+							"pm.test(\"Check OK Codes\", function () {\r",
+							"    pm.expect(pm.response.code).to.be.oneOf([200, 201, 204]);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response time is less than 200ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://rickandmortyapi.com/api/episode/1,7,30",
+					"protocol": "https",
+					"host": [
+						"rickandmortyapi",
+						"com"
+					],
+					"path": [
+						"api",
+						"episode",
+						"1,7,30"
+					]
+				},
+				"description": "Check response for an existing Id.\r\nId = 3"
+			},
+			"response": []
+		},
+		{
+			"name": "Episode - Check for multiple existing and not-existing Id",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "0d0cd739-b4e4-4406-88a2-6f49c79e3c47",
+						"exec": [
+							"var response = pm.response.json();\r",
+							"\r",
+							"pm.test(\"Check OK Codes\", function () {\r",
+							"    pm.expect(pm.response.code).to.be.oneOf([200, 201, 204]);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response time is less than 200ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://rickandmortyapi.com/api/episode/8,78,,340,8,8,-8,8,8,1,0,-1",
+					"protocol": "https",
+					"host": [
+						"rickandmortyapi",
+						"com"
+					],
+					"path": [
+						"api",
+						"episode",
+						"8,78,,340,8,8,-8,8,8,1,0,-1"
+					]
+				},
+				"description": "Check response for an existing Id.\r\nId = 3"
+			},
+			"response": []
+		},
+		{
+			"name": "Episode - Check for multiple valid and invalid Id",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "e5da5879-3551-4178-b76d-bded627dd228",
+						"exec": [
+							"var response = pm.response.json();\r",
+							"\r",
+							"pm.test(\"Check OK Codes\", function () {\r",
+							"    pm.expect(pm.response.code).to.be.oneOf([200, 201, 204]);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Invalid Id\", function () {\r",
+							"    pm.expect(response.error).to.eql(\"Cast to number failed for value \\\"NaN\\\" at path \\\"id\\\" for model \\\"Episode\\\"\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response time is less than 200ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://rickandmortyapi.com/api/episode/8,78,,34,,8,8,z,1,0,1",
+					"protocol": "https",
+					"host": [
+						"rickandmortyapi",
+						"com"
+					],
+					"path": [
+						"api",
+						"episode",
+						"8,78,,34,,8,8,z,1,0,1"
+					]
+				},
+				"description": "Check response for an existing Id.\r\nId = 3"
+			},
+			"response": []
+		},
+		{
+			"name": "Episode - Check for multiple invalid Id",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "eaa3db0f-b691-463b-8a0a-d8a328f1ba26",
+						"exec": [
+							"var response = pm.response.json();\r",
+							"\r",
+							"pm.test(\"Check OK Codes\", function () {\r",
+							"    pm.expect(pm.response.code).to.be.oneOf([200, 201, 204]);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Invalid Id\", function () {\r",
+							"    pm.expect(response.error).to.eql(\"Cast to number failed for value \\\"NaN\\\" at path \\\"id\\\" for model \\\"Episode\\\"\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response time is less than 200ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://rickandmortyapi.com/api/episode/8,17,,24,,8,8,z,1,0,1",
+					"protocol": "https",
+					"host": [
+						"rickandmortyapi",
+						"com"
+					],
+					"path": [
+						"api",
+						"episode",
+						"8,17,,24,,8,8,z,1,0,1"
+					]
+				},
+				"description": "Check response for an existing Id.\r\nId = 3"
+			},
+			"response": []
+		},
+		{
+			"name": "Episode - Check for filter with correct data",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "52e4cde3-da9c-48e1-a005-31285ffbbb08",
+						"exec": [
+							"var response = pm.response.json();\r",
+							"\r",
+							"pm.test(\"Check OK Codes\", function () {\r",
+							"    pm.expect(pm.response.code).to.be.oneOf([200, 201, 204]);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response time is less than 200ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://rickandmortyapi.com/api/episode/?name=The Ricklantis Mixup",
+					"protocol": "https",
+					"host": [
+						"rickandmortyapi",
+						"com"
+					],
+					"path": [
+						"api",
+						"episode",
+						""
+					],
+					"query": [
+						{
+							"key": "name",
+							"value": "The Ricklantis Mixup"
+						}
+					]
+				},
+				"description": "Check response for an existing Id.\r\nId = 3"
+			},
+			"response": []
+		},
+		{
+			"name": "Episode - Check for filter with incorrect data",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "53d2e882-569f-49e7-aced-9784c485bb72",
+						"exec": [
+							"var response = pm.response.json();\r",
+							"\r",
+							"pm.test(\"Check OK Codes\", function () {\r",
+							"    pm.expect(pm.response.code).to.be.oneOf([200, 201, 204]);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Invalid Id\", function () {\r",
+							"    pm.expect(response.error).to.eql(\"There is nothing here\");\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response time is less than 200ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://rickandmortyapi.com/api/episode/?episode=S01E10_Z",
+					"protocol": "https",
+					"host": [
+						"rickandmortyapi",
+						"com"
+					],
+					"path": [
+						"api",
+						"episode",
+						""
+					],
+					"query": [
+						{
+							"key": "episode",
+							"value": "S01E10_Z"
+						}
+					]
+				},
+				"description": "Check response for an existing Id.\r\nId = 3"
+			},
+			"response": []
+		},
+		{
+			"name": "Episode - Check for filter with empty data",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"id": "24335044-f92a-4ecd-b341-df4e658c03e9",
+						"exec": [
+							"var response = pm.response.json();\r",
+							"\r",
+							"pm.test(\"Check OK Codes\", function () {\r",
+							"    pm.expect(pm.response.code).to.be.oneOf([200, 201, 204]);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Response time is less than 200ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://rickandmortyapi.com/api/episode/?episode=&name=",
+					"protocol": "https",
+					"host": [
+						"rickandmortyapi",
+						"com"
+					],
+					"path": [
+						"api",
+						"episode",
+						""
+					],
+					"query": [
+						{
+							"key": "episode",
+							"value": ""
+						},
+						{
+							"key": "name",
+							"value": ""
+						}
+					]
+				},
+				"description": "Check response for an existing Id.\r\nId = 3"
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "2fdf177b-132b-418f-8a62-3d32e982561e",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "f227628d-7c2d-4784-8570-b59883b514be",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"protocolProfileBehavior": {}
+}
